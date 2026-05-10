@@ -16,6 +16,7 @@ jobs:
   build-and-push:
     name: Build & Push to Docker Hub
     runs-on: ubuntu-latest
+    environment: DEV
     outputs:
       image_tag: ${{ steps.meta.outputs.version }}
 
@@ -57,6 +58,7 @@ jobs:
   deploy:
     name: Deploy on Self-hosted
     runs-on: self-hosted
+    environment: DEV
     needs: build-and-push
 
     steps:
